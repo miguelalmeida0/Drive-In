@@ -1,8 +1,9 @@
+// This file will manage all the Javascript packages!
 {
   "name": "drive-in",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
