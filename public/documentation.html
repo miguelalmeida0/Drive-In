@@ -1,25 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation</title>
-</head>
-<body>
+  </head>
+  <body>
 
     <h1>Movie API</h1>
 
     <p>For this project i will be building a modern movie app, similar to netflix.
-    The users will be able to access all the specific information about the movies provided!</p>
-    <p>To achieve this task i will be using:</p>
-    <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>Node.js</li>
-    <li>Javascript</li>
-    <li>MongoDB</li>
-    </ul>
+      The users will be able to access all the specific information about the movies provided!</p>
+      <p>To achieve this task i will be using:</p>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Node.js</li>
+        <li>Javascript</li>
+        <li>MongoDB</li>
+      </ul>
+
+    <!-- Drive-in Features -->
+
+      <h2>Essential Features</h2>
+      <table>
+        <tr>
+          <th>Request</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Response</th>
+        </tr>
 
 
-</body>
-</html>
+        <!-- Get data area (about users, movies, director) -->
+
+        <tr>
+          <td>Get a list of movies</td>
+          <td>'/movies'</td>
+          <td>GET</td>
+          <td>Returns a JSON list of movies.</td>
+        </tr>
+
+        <tr>
+          <td>Get data about the movie</td>
+          <td>'/movies/:title'</td>
+          <td>GET</td>
+          <td>Returns a JSON data about a specific movie.</td>
+        </tr>
+
+        <tr>
+          <td>Get data about the director</td>
+          <td>'/director/:directorName'</td>
+          <td>GET</td>
+          <td>Returns a JSON data about the author's name.</td>
+        </tr>
+
+        <tr>
+          <td>Get all users</td>
+          <td>'/users'</td>
+          <td>GET</td>
+          <td>Returns a JSON data with all users.</td>
+        </tr>
+
+        <tr>
+          <td>Return data about a genre by name/title.</td>
+          <td>'/genres/:genre'</td>
+          <td>GET</td>
+          <td>Returns a JSON data with movies in that genre.</td>
+        </tr>
+
+
+        <!-- User profile update -->
+
+        <tr>
+          <td>Allow users to update their user information</td>
+          <td>'/users/:Username'</td>
+          <td>PUT</td>
+          <td>Returns the updated data fields by the user.</td>
+        </tr>
+
+        <tr>
+          <td>Add a new movie to the list of favorites</td>
+          <td>'/favorite/:movieName'</td>
+          <td>POST</td>
+          <td>Returns a text confirming which movie was added successfully.</td>
+        </tr>
+
+        <!-- Movie Removals and Register/Deregister -->
+
+        <tr>
+          <td>Allow new users to register</td>
+          <td>'/users/:newUser'</td>
+          <td>POST</td>
+          <td>Will add a new user to a JSON object.</td>
+        </tr>
+
+        <tr>
+          <td>Allow existing users to deregister</td>
+          <td>'/users/:deleteAccount'</td>
+          <td>DELETE</td>
+          <td>Return a text confirming that the user was deleted.</td>
+        </tr>
+
+        <tr>
+          <td>Remove movie from list of favorites</td>
+          <td>'/favorite/:deleteMovie'</td>
+          <td>DELETE</td>
+          <td>Returns a text confirming which movie was removed successfully.</td>
+        </tr>
+
+      </table>
+
+    </body>
+    </html>
