@@ -2,6 +2,7 @@
   const express = require("express");
   const morgan = require("morgan");
   const uuid = require("uuid");
+  const bodyParser = require('body-parser');
 
   const app = express();
 
@@ -65,63 +66,67 @@
 
   // GET requests
 
-  app.get("/movies", (req, res) => {
-    res.json(movies);
-  });
 
+    app.get("/", (req, res) => {
+      res.send("Glad to see you in the best Drive-In!");
+    });
 
-  app.get("/", (req, res) => {
-    res.send("Glad to see you in the best Drive-In!");
-  });
+    app.get('/documentation', (req, res) => {
+      res.sendfile('/public/documentation.html', {root: __dirname})
+    }),
 
-  app.get("/movies/:title", (req, res) => {
-    res.send("Movie by title");
-});
+    app.get("/movies", (req, res) => {
+      res.json(movies);
+    });
 
-app.get("/genres/:title", (req, res) => {
-    res.send("Genre by name or title");
-});
+    app.get("/movies/:title", (req, res) => {
+      res.send("Movie by title");
+    });
 
-app.get("/directors/:name", (req, res) => {
-    res.send("Info about the director by name");
-});
+    app.get("/genres/:title", (req, res) => {
+      res.send("Genre by name or title");
+    });
 
-//App post
+    app.get("/directors/:name", (req, res) => {
+      res.send("Info about the director by name");
+    });
 
-app.post("/users", (req, res) => {
-    res.send("Registration completed");
-});
+    //App post
 
-app.put("/users/:username", (req, res) => {
-    res.send("Information updated");
-});
+    app.post("/users", (req, res) => {
+      res.send("Registration completed");
+    });
 
-app.post("/users/:username/movies/:movieID", (req, res) => {
-    res.send("Movie was added to the favorite list");
-});
+    app.put("/users/:username", (req, res) => {
+      res.send("Information updated");
+    });
 
-//App Delete
+    app.post("/users/:username/movies/:movieID", (req, res) => {
+      res.send("Movie was added to the favorite list");
+    });
 
-app.delete("/users/:username/movies/:movieID", (req, res) => {
-    res.send("Movie was deleted");
-});
+    //App Delete
 
-app.delete("/users/:username", (req, res) => {
-    res.send("Your account was sadly deleted!");
-});
-      //Using Express Static to serve my documentation.html
+    app.delete("/users/:username/movies/:movieID", (req, res) => {
+      res.send("Movie was deleted");
+    });
 
-      app.use(express.static("public"));
+    app.delete("/users/:username", (req, res) => {
+      res.send("Your account was sadly deleted!");
+    });
+    //Using Express Static to serve my documentation.html
 
-      //Using Error handling middleware
+    app.use(express.static("public"));
 
-      app.use((err, req, res, next) => {
-        console.error(err.stack);
-        res.status(500).send("Something went wrong!");
-      });
+    //Using Error handling middleware
 
-      //Server is running in this port
+    app.use((err, req, res, next) => {
+      console.error(err.stack);
+      res.status(500).send("Something went wrong!");
+    });
 
-      app.listen(8080, () =>{
-        console.log("This app is listening on port 8080.");
-      });
+    //Server is running in this port
+
+    app.listen(8080, () =>{
+      console.log("This app is listening on port 8080.");
+    });
