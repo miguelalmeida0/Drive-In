@@ -8,7 +8,8 @@ app.use(morgan('common'));
 
 //My top 10 movie list
 
-let movies = {
+let movies = [
+{
   title: "Harry Potter and the Philosopher\’s Stone",
   year: "2001"
 },
@@ -57,6 +58,7 @@ let movies = {
   title: "Matrix",
   year: "1999"
 }
+];
 
 // GET requests
 app.get("/movies", (req, res) => {
@@ -75,7 +77,7 @@ app.use(express.static("public"));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something went wrong!"");
+  res.status(500).send("Something went wrong!");
 });
 
 //Server is running in this port
