@@ -1,71 +1,30 @@
-  //Requiring Express and Morgan
-  const express = require("express");
-  const morgan = require("morgan");
-  const uuid = require("uuid");
-  const bodyParser = require('body-parser');
+//Requiring Express and Morgan
+const morgan = require("morgan");
+const uuid = require("uuid");
+const bodyParser = require('body-parser');
+const express = require("express");
+// Requiring Mongoose and Models
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movies;
+const Users = Models.User;
+const Genres = Models.Genre;
+const Directors = Models.Director;
+
+
+
 
   const app = express();
 
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(morgan("common"));
 
-  app.use(bodyParser.json());
+  mongoose.connect('mongodb://localhost:27017/driveInDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
-  //My top 10 movie list
-
-  let movies = [
-    {
-      title: "Harry Potter and the Philosopher’s Stone",
-      year: "2001",
-    },
-
-    {
-      title: "Fight Club",
-      year: "1999"
-    },
-
-    {
-      title: "Parasite",
-      year: "2019"
-    },
-
-    {
-      title: "Joker",
-      year: "2019"
-    },
-
-    {
-      title: "The Lord of the Rings: The Fellowship of the Ring",
-      year: "2001"
-    },
-
-    {
-      title: "Interstellar",
-      year: "2014"
-    },
-
-    {
-      title: "The Shawshank Redemption",
-      year: "1994"
-    },
-
-    {
-      title: "Pulp Fiction",
-      year: "1994"
-    },
-
-    {
-      title: "Schindler's List",
-      year: "1993"
-    },
-
-    {
-      title: "Matrix",
-      year: "1999"
-    }
-  ];
 
   // GET requests
-
 
     app.get("/", (req, res) => {
       res.send("Glad to see you in the best Drive-In!");
@@ -76,30 +35,116 @@
     }),
 
     app.get("/movies", (req, res) => {
-      res.json(movies);
-    });
+    Movies.find()
+   .then((movies)=>{
+       res.status(201).json(movies);
+   })
+   .catch((err)=>{
+       console.error(err);
+       res.status(500).send('Error' + err);
+   });
+ });
 
-    app.get("/movies/:title", (req, res) => {
-      res.send("Movie by title");
-    });
 
-    app.get("/genres/:title", (req, res) => {
-      res.send("Genre by name or title");
-    });
+ //GET data about a single movie
+ app.get("/movies/:title", (req, res) => {
+   Movies.findOne({Title: req.params.title})
+   .then((movie)=>{
+     res.json(movie);
+   })
+   .catch((err)=>{
+     console.error(err);
+     res.status(500).send('Error' + err);
+   });
+ });
 
-    app.get("/directors/:name", (req, res) => {
-      res.send("Info about the director by name");
+ // GET data about a Genre
+ app.get('/genres/:genre', (req, res) => {
+   driveInDB.findOne({'Genre.Name': req.params.genre})
+   .then((movie)=>{
+     res.json(movie.Genre)
+   })
+   .catch((err)=>{
+     console.error(err);
+     res.status(500).send('Error' + err);
+   });
+ });
+
+// Find by Director name
+app.get('/directors/:directorName', (req, res) => {
+  driveInDB.findOne({ 'Director.Name': req.params.directorName })
+   .then((movie) => {
+     res.json(movie.Director);
+   })
+   .catch((err) => {
+     console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
+//Get all users
+app.get('/users', (req, res) => {
+  Users.find()
+  .then((users) => {
+    res.status(201).json(users);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error' + error);
+  });
+});
+
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
     });
+});
+
 
     //App post
 
-    app.post("/users", (req, res) => {
-      res.send("Registration completed");
-    });
+    //Add a user
+    /*
+  {
+    ID: Integer,
+    Username: String,
+    Password: String,
+    Email: String,
+    Birthday: Date
+  }
+  */
 
-    app.put("/users/:username", (req, res) => {
-      res.send("Information updated");
+  app.post('/users', (req, res) => {
+    Users.findOne({ Username: req.body.Username })
+    .then((user) => {
+      if (user) {
+        return res.status(400).send(req.body.Username + 'already exists');
+      } else {
+        Users
+        .create({
+          Username: req.body.Username,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday
+        })
+        .then((user) =>{res.status(201).json(user) })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Error: ' + error);
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error: ' + error);
     });
+  });
+
 
     app.post("/users/:username/movies/:movieID", (req, res) => {
       res.send("Movie was added to the favorite list");
@@ -127,6 +172,6 @@
 
     //Server is running in this port
 
-    app.listen(8080, () =>{
-      console.log("This app is listening on port 8080.");
+    app.listen(2000, () =>{
+      console.log("This app is listening on port 2000.");
     });
