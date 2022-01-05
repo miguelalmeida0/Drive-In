@@ -7,7 +7,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
-const Movies = Models.Movies;
+const Movies = Models.Movie;
 const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Director;
@@ -15,13 +15,13 @@ const Directors = Models.Director;
 
 
 
-  const app = express();
+const app = express();
 
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(morgan("common"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("common"));
 
-  mongoose.connect('mongodb://localhost:27017/driveInDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/driveInDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
   // GET requests
@@ -59,7 +59,7 @@ const Directors = Models.Director;
  });
 
  // GET data about a Genre
- app.get('/genres/:genre', (req, res) => {
+ app.get('/driveInDB/genre/:genre', (req, res) => {
    driveInDB.findOne({'Genre.Name': req.params.genre})
    .then((movie)=>{
      res.json(movie.Genre)
@@ -71,7 +71,7 @@ const Directors = Models.Director;
  });
 
 // Find by Director name
-app.get('/directors/:directorName', (req, res) => {
+app.get('/driveInDB/director/:directorName', (req, res) => {
   driveInDB.findOne({ 'Director.Name': req.params.directorName })
    .then((movie) => {
      res.json(movie.Director);
@@ -94,7 +94,7 @@ app.get('/users', (req, res) => {
   });
 });
 
-app.get('/users/:Username', (req, res) => {
+app.get('/users/:name', (req, res) => {
   Users.findOne({ Username: req.params.Username })
     .then((user) => {
       res.json(user);
@@ -104,6 +104,27 @@ app.get('/users/:Username', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
+
+//Allow user to update info by username
+ app.put('/users/:name', (req,res) => {
+   Users.findOneAndUpdate({ Username: req.params.Username}, { $set:
+     {
+       Username: req.body.Username,
+       Password: req.body.Password,
+       Email: req.body.Email,
+       Birthday: req.body.Birthday
+     }
+   },
+   { new: true }, //this line ensures the updated document is returned to the user
+   (err, updatedUser) => {
+     if(err) {
+       console.error(err);
+       res.status(500).send('Error' + err);
+     } else {
+       res.json(updatedUser);
+     }
+   });
+ });
 
 
     //App post
@@ -156,9 +177,21 @@ app.get('/users/:Username', (req, res) => {
       res.send("Movie was deleted");
     });
 
-    app.delete("/users/:username", (req, res) => {
-      res.send("Your account was sadly deleted!");
-    });
+    // Delete a user by username
+  app.delete('/users/:Username', (req, res) => {
+    Users.findOneAndRemove({ Username: req.params.Username })
+      .then((user) => {
+        if (!user) {
+          res.status(400).send(req.params.Username + ' was not found');
+        } else {
+          res.status(200).send(req.params.Username + ' was deleted.');
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      });
+  });
     //Using Express Static to serve my documentation.html
 
     app.use(express.static("public"));
