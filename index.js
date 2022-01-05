@@ -21,7 +21,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("common"));
 
-mongoose.connect('mongodb://localhost:27017/driveInDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/driveInDB', {
+  useNewUrlParser: true, useUnifiedTopology: true
+});
 
 
   // GET requests
@@ -59,8 +61,8 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', { useNewUrlParser: true,
  });
 
  // GET data about a Genre
- app.get('/driveInDB/genre/:genre', (req, res) => {
-   driveInDB.findOne({'Genre.Name': req.params.genre})
+ app.get('/genres/:genre', (req, res) => {
+   Movies.findOne({'Genre.Name': req.params.genre})
    .then((movie)=>{
      res.json(movie.Genre)
    })
@@ -72,8 +74,8 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', { useNewUrlParser: true,
 
 // Find by Director name
 app.get('/driveInDB/director/:directorName', (req, res) => {
-  driveInDB.findOne({ 'Director.Name': req.params.directorName })
-   .then((movie) => {
+  Movies.findOne({ 'Director.Name': req.params.directorName })
+   .then((movies) => {
      res.json(movie.Director);
    })
    .catch((err) => {
