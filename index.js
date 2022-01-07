@@ -60,10 +60,11 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
    });
  });
 
+
  // GET data about a Genre
  app.get('/genres/:genre', (req, res) => {
    Movies.findOne({'Genre.Name': req.params.genre})
-   .then((movie)=>{
+   .then((movies)=>{
      res.json(movie.Genre)
    })
    .catch((err)=>{
@@ -73,9 +74,9 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
  });
 
 // Find by Director name
-app.get('/driveInDB/director/:directorName', (req, res) => {
+app.get('/director/:directorName', (req, res) => {
   Movies.findOne({ 'Director.Name': req.params.directorName })
-   .then((movies) => {
+   .then((movie) => {
      res.json(movie.Director);
    })
    .catch((err) => {
@@ -96,7 +97,7 @@ app.get('/users', (req, res) => {
   });
 });
 
-app.get('/users/:name', (req, res) => {
+app.get('/users/:username', (req, res) => {
   Users.findOne({ Username: req.params.Username })
     .then((user) => {
       res.json(user);
@@ -146,7 +147,7 @@ app.get('/users/:name', (req, res) => {
     Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
-        return res.status(400).send(req.body.Username + 'already exists');
+        return res.status(400).send(req.body.Username + ' already exists');
       } else {
         Users
         .create({
@@ -169,9 +170,20 @@ app.get('/users/:name', (req, res) => {
   });
 
 
-    app.post("/users/:username/movies/:movieID", (req, res) => {
-      res.send("Movie was added to the favorite list");
+  app.post('/users/:Username/movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username }, {
+       $push: { FavoriteMovies: req.params.MovieID }
+     },
+     { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
     });
+  });
 
     //App Delete
 
