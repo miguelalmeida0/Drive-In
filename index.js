@@ -19,6 +19,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
 app.use(morgan("common"));
 
 mongoose.connect('mongodb://localhost:27017/driveInDB', {
@@ -28,7 +31,7 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
 
   // GET requests
 
-    app.get("/", (req, res) => {
+    app.get("/", passport.authenticate('jwt', { session: false }), (req, res) => {
       res.send("Glad to see you in the best Drive-In!");
     });
 
@@ -36,7 +39,7 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
       res.sendfile('/public/documentation.html', {root: __dirname})
     }),
 
-    app.get("/movies", (req, res) => {
+    app.get("/movies", passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
    .then((movies)=>{
        res.status(201).json(movies);
@@ -49,7 +52,7 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
 
 
  //GET data about a single movie
- app.get("/movies/:title", (req, res) => {
+ app.get("/movies/:title", passport.authenticate('jwt', { session: false }), (req, res) => {
    Movies.findOne({Title: req.params.title})
    .then((movie)=>{
      res.json(movie);
@@ -62,7 +65,7 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
 
 
  // GET data about a Genre
- app.get('/genres/:genre', (req, res) => {
+ app.get('/genres/:genre', passport.authenticate('jwt', { session: false }), (req, res) => {
    Movies.findOne({'Genre.Name': req.params.genre})
    .then((movie)=>{
      res.json(movie.Genre)
@@ -74,7 +77,7 @@ mongoose.connect('mongodb://localhost:27017/driveInDB', {
  });
 
 // Find by Director name
-app.get('/director/:directorName', (req, res) => {
+app.get('/director/:directorName', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ 'Director.Name': req.params.directorName })
    .then((movie) => {
      res.json(movie.Director);
@@ -86,7 +89,7 @@ app.get('/director/:directorName', (req, res) => {
 });
 
 //Get all users
-app.get('/users', (req, res) => {
+app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.find()
   .then((users) => {
     res.status(201).json(users);
@@ -97,7 +100,7 @@ app.get('/users', (req, res) => {
   });
 });
 
-app.get('/users/:username', (req, res) => {
+app.get('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({ username: req.params.username })
     .then((user) => {
       res.json(user);
@@ -109,7 +112,7 @@ app.get('/users/:username', (req, res) => {
 });
 
 //Allow user to update info by username
- app.put('/users/:username', (req,res) => {
+ app.put('/users/:username', passport.authenticate('jwt', { session: false }), (req,res) => {
    Users.findOneAndUpdate({ username: req.params.username}, { $set:
      {
        username: req.body.username,
@@ -170,7 +173,7 @@ app.get('/users/:username', (req, res) => {
   });
 
 
-  app.post('/users/:username/movies/:MovieID', (req, res) => {
+  app.post('/users/:username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate({ username: req.params.username }, {
        $push: { FavoriteMovies: req.params.MovieID }
      },
@@ -187,7 +190,7 @@ app.get('/users/:username', (req, res) => {
 
     //Delete a movie from the Favorites List
 
-    app.delete('/users/:username/movies/:title', (req, res) => {
+    app.delete('/users/:username/movies/:title', passport.authenticate('jwt', { session: false }), (req, res) => {
        Users.findOneAndUpdate({username: req.params.username}, {
            $pull: {FavoriteMovies: req.params.title}
        },
@@ -203,7 +206,7 @@ app.get('/users/:username', (req, res) => {
    });
 
     // Delete a user by username
-  app.delete('/users/:username', (req, res) => {
+  app.delete('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndRemove({ username: req.params.username })
       .then((user) => {
         if (!user) {
