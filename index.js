@@ -272,6 +272,6 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }), [
 
   //Server is running in this port
 const port = process.env.PORT || 2000;
-  app.listen(port, '0.0.0.0' () => {
+  app.listen(port, '0.0.0.0' ,() => {
     console.log('Listening on Port ' + port);
   });
