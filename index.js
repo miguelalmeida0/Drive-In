@@ -53,7 +53,7 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 // GET requests
 
-app.get("/", passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get("/", (req, res) => {
   res.send("Glad to see you in the best Drive-In!");
 });
 
