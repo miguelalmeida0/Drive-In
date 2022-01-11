@@ -53,8 +53,8 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 // GET requests
 
-app.get("/", (req, res) => {
-  res.send("Glad to see you in the best Drive-In!");
+app.get('/', (req, res) => {
+  res.send("Glad to see you in the best Drive-In!")
 });
 
 app.get('/documentation', (req, res) => {
@@ -272,6 +272,6 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }), [
 
   //Server is running in this port
 const port = process.env.PORT || 2000;
-  app.listen(port, '0.0.0.0' ,() => {
+  app.listen(port, '0.0.0.0',() => {
     console.log('Listening on Port ' + port);
   });
