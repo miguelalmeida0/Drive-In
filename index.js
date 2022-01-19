@@ -49,6 +49,7 @@ require('./passport');
 app.use(morgan("common"));
 let auth = require('./auth')(app);
 
+
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // GET requests
