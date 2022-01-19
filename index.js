@@ -140,25 +140,30 @@ app.get('/users/:username', passport.authenticate('jwt', { session: false }), (r
 
 // Allow users to update info by username
 
-app.put('/users/:username', passport.authenticate('jwt', { session: false }), [
+app.put('/users/:username', [
   check('username', 'Please fill your Username field with Alphanumeric values only.').isAlphanumeric(),
   check('password', 'Password field is required').not().isEmpty(),
   check('email', 'Email failed to validate').isEmail()
 ], (req, res) => {
-  Users.findOneAndUpdate({ username: req.params.username }, {
+  // Check the validation object for errors
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
     $set:
     {
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-      birthday: req.body.birthday
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Birthday: req.body.Birthday
     }
   },
-    { new: true }, //this line ensures the updated document is returned to the user
+    { new: true },
     (err, updatedUser) => {
       if (err) {
         console.error(err);
-        res.status(500).send('Error' + err);
+        res.status(500).send('Error: ' + err);
       } else {
         res.json(updatedUser);
       }
