@@ -1,15 +1,19 @@
 //Requiring Express and Morgan
 
-const morgan = require("morgan");
-const uuid = require("uuid");
+const morgan = require('morgan');
+const uuid = require('uuid');
 const bodyParser = require('body-parser');
-const express = require("express");
+const express = require('express');
 const { check, validationResult } = require('express-validator');
 
 // Requiring Mongoose and Models
 
 const mongoose = require('mongoose');
 const Models = require('./models.js');
+
+mongoose.connect('mongodb://localhost:27017/driveInDB', {
+  useNewUrlParser: true, useUnifiedTopology: true
+});
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -50,19 +54,19 @@ app.use(morgan("common"));
 let auth = require('./auth')(app);
 
 
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 // GET requests
 
 app.get('/', (req, res) => {
-  res.send("Glad to see you in the best Drive-In!")
+  res.send('Glad to see you in the best Drive-In!')
 });
 
 app.get('/documentation', (req, res) => {
   res.sendfile('/public/documentation.html', { root: __dirname })
 }),
 
-  app.get("/movies", passport.authenticate('jwt', { session: false }), (req, res) => {
+  app.get('/movies', (req, res) => {
     Movies.find()
       .then((movies) => {
         res.status(201).json(movies);
