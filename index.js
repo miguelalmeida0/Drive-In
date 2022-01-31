@@ -20,6 +20,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
   useUnifiedTopology: true
 });
 
+
 const Movies = Models.Movie;
 const Users = Models.User;
 const Genres = Models.Genre;
