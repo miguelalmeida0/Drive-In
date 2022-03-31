@@ -34,25 +34,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require("cors");
 
-let allowedOrigins = [
+/* let allowedOrigins = [
   "http://localhost:2000/",
   "http://localhost:1234",
   "http://localhost:4200",
 ];
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        let message =
-          "The CORS policy for this application doesnt allow access from origin " +
-          origin;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
-    },
-  })
-);
+*/
+app.use(cors());
 
 const passport = require("passport");
 require("./passport");
