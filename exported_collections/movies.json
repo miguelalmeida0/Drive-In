@@ -1,10 +1,220 @@
-{"_id":{"$oid":"61d36e058c4ee75d4c9a3067"},"Title":"Harry Potter and the Sorcerer's Stone","Description":"An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.","Genre":{"Name":"Fantasy","Description":"Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. ... Fantasy films often have an element of magic, myth, wonder, escapism, and the extraordinary."},"Director":{"Name":"Chris Columbus","Bio":"Chris Joseph Columbus[1] (born September 10, 1958) is an American filmmaker. Born in Spangler, Pennsylvania, Columbus studied film at Tisch School of the Arts where he developed an interest in filmmaking.","Birth":"1958"},"ImagePath":"harrypotter.png","Featured":true,"Actors":["Daniel Radcliffe","Emma Watson"]}
-{"_id":{"$oid":"61d431104b19d877a918df9f"},"Title":"Toy Story","Description":"A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.","Genre":{"Name":"Animation","Description":"Animated Films are ones in which individual drawings, paintings, or illustrations are photographed frame by frame (stop-frame cinematography)."},"Director":{"Name":"John Lasseter","Bio":"John Alan Lasseter is an American film director, producer, screenwriter, animator, voice actor, and the head of animation at Skydance Animation.","Birth":"1957"},"ImagePath":"toystory.png","Actors":["Tom Hanks","Tim Allen"],"Featured":true}
-{"_id":{"$oid":"61d432f74b19d877a918dfa0"},"Title":"Don't Look Up","Description":"Two low-level astronomers must go on a giant media tour to warn mankind of an approaching comet that will destroy planet Earth.","Genre":{"Name":"Comedy","Description":"Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."},"Director":{"Name":"Adam McKay","Bio":"Adam McKay is an American screenwriter, director, comedian, and actor. McKay has a comedy partnership with Will Ferrell, with whom he co-wrote some films.","Birth":"1968"},"ImagePath":"dontlookup.png","Actors":["Leonardo DiCaprio","Jennifer Lawrence"],"Featured":true}
-{"_id":{"$oid":"61d4344b4b19d877a918dfa1"},"Title":"Get Hard","Description":"When millionaire James King is jailed for fraud and bound for San Quentin, he turns to Darnell Lewis to prep him to go behind bars.","Genre":{"Name":"Comedy","Description":"Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."},"Director":{"Name":"Adam McKay","Bio":"Adam McKay is an American screenwriter, director, comedian, and actor. McKay has a comedy partnership with Will Ferrell, with whom he co-wrote some films.","Birth":"1968"},"ImagePath":"gethard.png","Actors":["Will Ferrel","Kevin Hart"],"Featured":true}
-{"_id":{"$oid":"61d435d44b19d877a918dfa2"},"Title":"Soul","Description":"Joe is a middle-school band teacher whose life hasn't quite gone the way he expected. His true passion is jazz and he's good. But when he travels to another realm to help someone find their passion, he soon discovers what it means to have soul.","Genre":{"Name":"Animation","Description":"Animated Films are ones in which individual drawings, paintings, or illustrations are photographed frame by frame (stop-frame cinematography)."},"Director":{"Name":"Pete Docter","Bio":"Pete Docter is the Oscar-winning director of 'Monsters, Inc', 'Up' and 'Inside Out' and Chief Creative Officer at Pixar Animation Studios.","Birth":"1968"},"ImagePath":"soul.png","Actors":["Jamie Foxx","Tina Fey"],"Featured":true}
-{"_id":{"$oid":"61d437aa4b19d877a918dfa3"},"Title":"Monsters, Inc","Descriptionm":"In order to power the city, monsters have to scare children so that they scream. However, the children are toxic to the monsters, and after a child gets through, two monsters realize things may not be what they think.","Genre":{"Name":"Animation","Description":"Animation is a method in which pictures are manipulated to appear as moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film."},"Director":{"Name":"Pete Docter","Bio":"Pete Docter is the Oscar-winning director of 'Monsters, Inc', 'Up' and 'Inside Out' and Chief Creative Officer at Pixar Animation Studios.","Birth":"1968"},"ImagePath":"monstersinc.png","Actors":["John Goodman","Billy Crystal"],"Featured":true}
-{"_id":{"$oid":"61d4388c4b19d877a918dfa4"},"Title":"The Lord of the Rings: The Fellowship of the Ring","Description":"A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.","Genre":{"Name":"Peter Jackson","Bio":"Sir Peter Robert Jackson is a New Zealand film director, screenwriter, and film producer.","Birth":"1961"},"ImagePath":"lotr.png","Actors":["Elijah Wood","Ian McKellen"],"Featured":true}
-{"_id":{"$oid":"61d439cb4b19d877a918dfa5"},"Title":"The Lord of the Rings: The Return of the King","Description":"Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.","Genre":{"Name":"Fantasy","Description":"Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds."},"Director":{"Name":"Peter Jackson","Bio":"Sir Peter Robert Jackson is a New Zealand film director, screenwriter, and film producer.","Birth":"1961"},"ImagePath":"lotr3.png","Actors":["Elijah Wood","Ian McKellen"],"Featured":true}
-{"_id":{"$oid":"61d43bbe4b19d877a918dfa6"},"Title":"Harry Potter and the Chamber of Secrets","Description":"An ancient prophecy seems to be coming true when a mysterious presence begins stalking the corridors of a school of magic and leaving its victims paralyzed.","Genre":{"Name":"Fantasy","Description":"Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds."},"Director":{"Name":"Chris Columbus","Bio":"Chris Joseph Columbus is an American filmmaker. Born in Spangler, Pennsylvania.","Birth":"1958"},"ImagePath":"harrypotter2.png","Actors":["Daniel Radcliffe","Emma Watson"],"Features":true}
-{"_id":{"$oid":"61d43e8e4b19d877a918dfa7"},"Title":"The Novice","Description":"A college freshman joins her university's rowing team and undertakes an obsessive physical and psychological journey to make it to the top varsity boat.","Genre":{"Name":"Thriller","Description":"Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."},"Director":{"Name":"Lauren Hadaway","Bio":"Lauren Hadaway is a director and writer, known for The Novice (2021) and Whiplash (2014).","Birth":"1981"},"ImagePath":"thenovice.png","Actors":["Isabelle Fuhrman","Amy Forsyth"],"Featured":true}
+{
+  "_id": {
+    "$oid": "61d36e058c4ee75d4c9a3067"
+  },
+  "Title": "Harry Potter and the Sorcerer's Stone",
+  "Description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+  "Genre": {
+    "Name": "Fantasy",
+    "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. ... Fantasy films often have an element of magic, myth, wonder, escapism, and the extraordinary."
+  },
+  "Director": {
+    "Name": "Chris Columbus",
+    "Bio": "Chris Joseph Columbus[1] (born September 10, 1958) is an American filmmaker. Born in Spangler, Pennsylvania, Columbus studied film at Tisch School of the Arts where he developed an interest in filmmaking.",
+    "Birth": "1958"
+  },
+  "ImagePath": "https://www.meme-arsenal.com/memes/a305b2da03c5a069a0159f1fdceb91f5.jpg",
+  "Featured": true,
+  "Actors": [
+    "Daniel Radcliffe",
+    "Emma Watson"
+  ]
+}
+{
+  "_id": {
+    "$oid": "61d431104b19d877a918df9f"
+  },
+  "Title": "Toy Story",
+  "Description": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+  "Genre": {
+    "Name": "Animation",
+    "Description": "Animated Films are ones in which individual drawings, paintings, or illustrations are photographed frame by frame (stop-frame cinematography)."
+  },
+  "Director": {
+    "Name": "John Lasseter",
+    "Bio": "John Alan Lasseter is an American film director, producer, screenwriter, animator, voice actor, and the head of animation at Skydance Animation.",
+    "Birth": "1957"
+  },
+  "ImagePath": "https://upload.wikimedia.org/wikipedia/commons/5/51/Toy_Story_logo.jpg",
+  "Actors": [
+    "Tom Hanks",
+    "Tim Allen"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d432f74b19d877a918dfa0"
+  },
+  "Title": "Don't Look Up",
+  "Description": "Two low-level astronomers must go on a giant media tour to warn mankind of an approaching comet that will destroy planet Earth.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+  },
+  "Director": {
+    "Name": "Adam McKay",
+    "Bio": "Adam McKay is an American screenwriter, director, comedian, and actor. McKay has a comedy partnership with Will Ferrell, with whom he co-wrote some films.",
+    "Birth": "1968"
+  },
+  "ImagePath": "https://t2id.com/wp-content/uploads/2021/12/O-que-sobe-deve-descer-Por-que-e-normal-odiar-750x375.jpg",
+  "Actors": [
+    "Leonardo DiCaprio",
+    "Jennifer Lawrence"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d4344b4b19d877a918dfa1"
+  },
+  "Title": "Get Hard",
+  "Description": "When millionaire James King is jailed for fraud and bound for San Quentin, he turns to Darnell Lewis to prep him to go behind bars.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+  },
+  "Director": {
+    "Name": "Adam McKay",
+    "Bio": "Adam McKay is an American screenwriter, director, comedian, and actor. McKay has a comedy partnership with Will Ferrell, with whom he co-wrote some films.",
+    "Birth": "1968"
+  },
+  "ImagePath": "https://neilsentertainmentpicks.files.wordpress.com/2015/03/ghd-09735.jpg",
+  "Actors": [
+    "Will Ferrel",
+    "Kevin Hart"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d435d44b19d877a918dfa2"
+  },
+  "Title": "Soul",
+  "Description": "Joe is a middle-school band teacher whose life hasn't quite gone the way he expected. His true passion is jazz and he's good. But when he travels to another realm to help someone find their passion, he soon discovers what it means to have soul.",
+  "Genre": {
+    "Name": "Animation",
+    "Description": "Animated Films are ones in which individual drawings, paintings, or illustrations are photographed frame by frame (stop-frame cinematography)."
+  },
+  "Director": {
+    "Name": "Pete Docter",
+    "Bio": "Pete Docter is the Oscar-winning director of 'Monsters, Inc', 'Up' and 'Inside Out' and Chief Creative Officer at Pixar Animation Studios.",
+    "Birth": "1968"
+  },
+  "ImagePath": "https://cdn.vox-cdn.com/thumbor/LW7UUrHHcs466Pni3iKU1j1JSYw=/0x0:1200x680/1820x1213/filters:focal(504x244:696x436)/cdn.vox-cdn.com/uploads/chorus_image/image/65103379/soul_logo_rendered_color_.0.jpg",
+  "Actors": [
+    "Jamie Foxx",
+    "Tina Fey"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d437aa4b19d877a918dfa3"
+  },
+  "Title": "Monsters, Inc",
+  "Description": "In order to power the city, monsters have to scare children so that they scream. However, the children are toxic to the monsters, and after a child gets through, two monsters realize things may not be what they think.",
+  "Genre": {
+    "Name": "Animation",
+    "Description": "Animation is a method in which pictures are manipulated to appear as moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film."
+  },
+  "Director": {
+    "Name": "Pete Docter",
+    "Bio": "Pete Docter is the Oscar-winning director of 'Monsters, Inc', 'Up' and 'Inside Out' and Chief Creative Officer at Pixar Animation Studios.",
+    "Birth": "1968"
+  },
+  "ImagePath": "https://i.redd.it/p19ebxb096141.jpg",
+  "Actors": [
+    "John Goodman",
+    "Billy Crystal"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d4388c4b19d877a918dfa4"
+  },
+  "Title": "The Lord of the Rings: The Fellowship of the Ring",
+  "Description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+  "Genre": {
+    "Name": "Fantasy",
+    "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds."
+  },
+  "Director": {
+    "Name": "Peter Jackson",
+    "Bio": "Sir Peter Robert Jackson is a New Zealand film director, screenwriter, and film producer.",
+    "Birth": "1961"
+  },
+  "ImagePath": "https://cdn.britannica.com/34/201734-050-2B1ECD3E/Dominic-Monaghan-Merry-scene-Elijah-Wood-Frodo.jpg",
+  "Actors": [
+    "Elijah Wood",
+    "Ian McKellen"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d439cb4b19d877a918dfa5"
+  },
+  "Title": "The Lord of the Rings: The Return of the King",
+  "Description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+  "Genre": {
+    "Name": "Fantasy",
+    "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds."
+  },
+  "Director": {
+    "Name": "Peter Jackson",
+    "Bio": "Sir Peter Robert Jackson is a New Zealand film director, screenwriter, and film producer.",
+    "Birth": "1961"
+  },
+  "ImagePath": "https://c4.wallpaperflare.com/wallpaper/930/359/636/the-lord-of-the-rings-the-lord-of-the-rings-the-return-of-the-king-wallpaper-preview.jpg",
+  "Actors": [
+    "Elijah Wood",
+    "Ian McKellen"
+  ],
+  "Featured": true
+}
+{
+  "_id": {
+    "$oid": "61d43bbe4b19d877a918dfa6"
+  },
+  "Title": "Harry Potter and the Chamber of Secrets",
+  "Description": "An ancient prophecy seems to be coming true when a mysterious presence begins stalking the corridors of a school of magic and leaving its victims paralyzed.",
+  "Genre": {
+    "Name": "Fantasy",
+    "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds."
+  },
+  "Director": {
+    "Name": "Chris Columbus",
+    "Bio": "Chris Joseph Columbus is an American filmmaker. Born in Spangler, Pennsylvania.",
+    "Birth": "1958"
+  },
+  "ImagePath": "https://voidagger.files.wordpress.com/2014/01/tumblr_lmyjovdrwu1qgs4sno1_5001.jpg",
+  "Actors": [
+    "Daniel Radcliffe",
+    "Emma Watson"
+  ],
+  "Features": true
+}
+{
+  "_id": {
+    "$oid": "61d43e8e4b19d877a918dfa7"
+  },
+  "Title": "The Novice",
+  "Description": "A college freshman joins her university's rowing team and undertakes an obsessive physical and psychological journey to make it to the top varsity boat.",
+  "Genre": {
+    "Name": "Thriller",
+    "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+  "Director": {
+    "Name": "Lauren Hadaway",
+    "Bio": "Lauren Hadaway is a director and writer, known for The Novice (2021) and Whiplash (2014).",
+    "Birth": "1981"
+  },
+  "ImagePath": "https://ca-times.brightspotcdn.com/dims4/default/e2e4ae4/2147483647/strip/true/crop/1430x804+0+0/resize/840x472!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fcf%2F3d%2Fadfcda89473b9ea1fe7f0ed09a02%2Fthenoviceisabellefuhrman1.jpg",
+  "Actors": [
+    "Isabelle Fuhrman",
+    "Amy Forsyth"
+  ],
+  "Featured": true
+}
