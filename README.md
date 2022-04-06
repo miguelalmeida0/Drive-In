@@ -7,11 +7,11 @@ Users will be able to sign up, update their personal information, and create a l
 
 Tools Used
 
--Javascript
--Node.js
--MongoDB
--Express
--REST API
+*Javascript
+*Node.js
+*MongoDB
+*Express
+\*REST API
 
 Features
 
