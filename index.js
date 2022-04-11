@@ -189,26 +189,33 @@ app.put(
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-    Users.findOneAndUpdate(
-      { username: req.params.username },
-      {
-        $set: {
-          username: req.body.username,
-          password: req.body.password,
-          email: req.body.email,
-          birthday: req.body.birthday,
-        },
-      },
-      { new: true },
-      (err, updatedUser) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send("Error: " + err);
+    let hashedPassword = Users.hashPassword(req.body.password);
+    Users.findOne({ username: req.body.username })
+      .then((user) => {
+        if (user) {
+          if (user.username === req.body.username) {
+            return res.status(400).send(req.body.Username + " already exists");
+          }
         } else {
-          res.json(updatedUser);
+          Users.create({
+            username: req.body.username,
+            password: hashedPassword,
+            email: req.body.email,
+            birthday: req.body.birthday,
+          })
+            .then((user) => {
+              res.status(201).json(user);
+            })
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send("Error: " + error);
+            });
         }
-      }
-    );
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
   }
 );
 
