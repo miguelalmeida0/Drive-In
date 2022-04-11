@@ -190,13 +190,13 @@ app.put(
       return res.status(422).json({ errors: errors.array() });
     }
     Users.findOneAndUpdate(
-      { Username: req.params.Username },
+      { username: req.params.username },
       {
         $set: {
-          Username: req.body.Username,
-          Password: req.body.Password,
-          Email: req.body.Email,
-          Birthday: req.body.Birthday,
+          username: req.body.username,
+          password: req.body.password,
+          email: req.body.email,
+          birthday: req.body.birthday,
         },
       },
       { new: true },
