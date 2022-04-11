@@ -194,7 +194,7 @@ app.put(
       .then((user) => {
         if (user) {
           if (user.username === req.body.username) {
-            return res.status(400).send(req.body.Username + " already exists");
+            return res.status(400).send(req.body.username + " already exists");
           }
         } else {
           Users.create({
